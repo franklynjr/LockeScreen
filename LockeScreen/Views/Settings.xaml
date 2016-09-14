@@ -1,0 +1,145 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="LockeScreen.Views.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:vc="clr-namespace:LockeScreen.ValueConverters"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+
+        <vc:OnOffValueConverter x:Name="OnOffValueConverter" />
+    </phone:PhoneApplicationPage.Resources>
+        <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        
+        <phone:Pivot Title="LOCKE SCREEN">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="general">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <CheckBox Content="dynamic background enabled" IsChecked="{Binding Settings.DynamicLockScreen, Mode=TwoWay}" Margin="10,0,0,0" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1"/>
+                        <!--<TextBlock Text="{Binding Settings.DynamicLockScreen, Converter={StaticResource OnOffValueConverter}}" />-->
+                        <!--<RadioButton FontSize="28" Content="on" GroupName="DynamicBg" IsChecked="{Binding Settings.DynamicLockScreen}"/>-->
+                        <!--<RadioButton FontSize="28" Content="off" GroupName="DynamicBg"  IsChecked="true" />-->
+                     </StackPanel>
+                    
+                   <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="20,0,0,0">
+                        <TextBlock Text="toast" FontSize="28" Margin="0,16,0,0"/>
+                        
+                        <RadioButton Name="ToastOn" FontSize="28" Content="on" GroupName="toast" Checked="ToastOn_Checked_1" />
+                        <RadioButton Name="ToastOff" FontSize="28" Content="off" GroupName="toast" Checked="ToastOff_Checked_1" />
+                    
+                   </StackPanel>
+                    
+                   <Rectangle Grid.Row="2" Fill="Gray" Height="2"/>
+                   <Button Grid.Row="3" Name="btnSetAs" Content="set as default lock screen provider" Click="btnSetAs_Click_1"  HorizontalAlignment="Left">
+                        <Button.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#FF938A8A" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Foreground>
+                    </Button>
+                    
+                    <Button Grid.Row="4" Name="btnReset" Content="restore default settings" Click="btnReset_Click_1" HorizontalAlignment="Left">
+                        <Button.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#FF938A8A" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Foreground>
+                    </Button>
+                    
+
+                </Grid>
+            </phone:PivotItem>
+            <phone:PivotItem Header="sources">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Margin="0,0,0,17" Orientation="Vertical" Grid.Row="1">
+
+
+                        <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" Content="phone" Height="81" Name="phoneEnabled" IsChecked="{Binding Settings.PhonePanoramaEnabled, Mode=TwoWay}" FontSize="28" Unchecked="phoneEnabled_Unchecked_1" Checked="phoneEnabled_Checked_1"/>
+                                <Button  Name="btnClearPhone" Content="clear selected phone images"  Margin="0,0,0,0" FontSize="16" Grid.Column="1" Click="btnClearPhone_Click_1"/>
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Column="0" Content="flickr" Height="81" Name="flickrEnabled" IsChecked="{Binding Settings.FlickrPanoramaEnabled, Mode=TwoWay}" FontSize="28" Unchecked="flickrEnabled_Unchecked_1" Checked="flickrEnabled_Checked_1"/>
+                                <Button Grid.Column="1" Name="btnCleaflickr" Content="clear selected flickr images"  Margin="0,0,0,0" FontSize="16" Click="btnCleaflickr_Click_1"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" Content="facebook" Height="81" Name="facebookEnabled" IsChecked="{Binding Settings.FacebookPanoramaEnabled, Mode=TwoWay}" FontSize="28" Unchecked="facebookEnabled_Unchecked_1" Checked="facebookEnabled_Checked_1"/>
+                                <Button Grid.Column="1" Name="btnClearfacebook" Content="clear selected facebook images"  Margin="0,0,0,0" FontSize="16" Click="btnClearfacebook_Click_1"/>
+                            </Grid>
+                        </StackPanel>
+                        <TextBlock Text="Other" FontSize="28" Margin="15,0,0,0"/>
+                        <StackPanel  Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Content="quick set" Height="81" Name="quicksetEnabled" IsChecked="{Binding Settings.QuickSetPanoramaEnabled, Mode=TwoWay}" FontSize="28" />
+                                <Button Grid.Column="1" Name="btnClearAll" Content="clear all" Margin="0,0,0,0" FontSize="16" Click="btnClearAll_Click_1"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel  Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Content="note" Height="81" Name="NoteEnabled" IsChecked="{Binding Settings.NotePanoramaEnabled, Mode=TwoWay}" FontSize="28" />
+                                <Button Grid.Column="1" Name="btnCleaNote" Content="clear note" Margin="0,0,0,0" FontSize="16" Click="btnCleaNote_Click_1" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+
+
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+    
+</phone:PhoneApplicationPage>

@@ -1,0 +1,93 @@
+     <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Name="btnSetAs" Content="Default Lock Screen Provider" Click="btnSetAs_Click_1" BorderBrush="{x:Null}" HorizontalAlignment="Left">
+                        <Button.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#FF938A8A" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Foreground>
+                    </Button>
+                    <Button Grid.Row="1" Name="btnReset" Content="Restore Default Settings" Click="btnReset_Click_1" BorderBrush="{x:Null}" HorizontalAlignment="Left">
+                        <Button.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#FF938A8A" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Foreground>
+                    </Button>
+                    <Rectangle Grid.Row="2" Fill="Gray" Height="2"/>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal">
+                        <TextBlock Text="Toast" FontSize="28" Margin="0,16,0,0"/>
+                        <RadioButton FontSize="28" Content="on" GroupName="toast" IsChecked="{Binding Settings.ToastEnabled}"/>
+                        <RadioButton FontSize="28" Content="off" GroupName="toast"  IsChecked="true" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Orientation="Horizontal">
+                        <TextBlock Text="Dynamic Background" FontSize="28" Margin="0,16,0,0"/>
+                        <Slider Width="100" Name="DynamicSlide" Tap="DynamicSlide_Tap" TabNavigation="Local" UseLayoutRounding="True" Value="0" />
+                        <TextBlock Text="{Binding Settings.DynamicLockScreen, Converter={StaticResource OnOffValueConverter}}" />
+                        <!--<RadioButton FontSize="28" Content="on" GroupName="DynamicBg" IsChecked="{Binding Settings.DynamicLockScreen}"/>-->
+                        <!--<RadioButton FontSize="28" Content="off" GroupName="DynamicBg"  IsChecked="true" />-->
+                    </StackPanel>
+
+                </Grid>
+
+
+controls:PivotItem Header="sources">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="{Binding Settings.Text}" Grid.Row="0" />
+                   
+                    
+                      <StackPanel Margin="0,0,0,17" Orientation="Vertical" Grid.Row="1">
+                       
+                          
+                        <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" Content="phone" Height="81" Name="phoneEnabled" IsChecked="{Binding Settings.FacebookPanoramaEnabled, Mode=TwoWay}" FontSize="28" />
+                                <Button Grid.Column="1"  Name="btnClearPhone" Content="clear" Margin="100,0,0,0"/>
+                        </Grid>
+                        </StackPanel>
+                          
+                        <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox Grid.Column="0" Content="flickr" Height="81" Name="flickrEnabled" IsChecked="{Binding Settings.FacebookPanoramaEnabled, Mode=TwoWay}" FontSize="28" />
+                                <Button Grid.Column="1" Name="btnCleaflickr" Content="clear" Margin="100,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="0,0,0,17" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" Content="facebook" Height="81" Name="facebookEnabled" IsChecked="{Binding Settings.FacebookPanoramaEnabled, Mode=TwoWay}" FontSize="28" />
+                                <Button Grid.Column="1" Name="btnClearfacebook" Content="clear" Margin="100,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                        <TextBlock Text="Other" FontSize="28" Margin="15,0,0,0"/>
+                        <CheckBox Content="quick set" Height="81" Name="quicksetEnabled" IsChecked="{Binding Settings.FacebookPanoramaEnabled, Mode=TwoWay}" FontSize="28" />
+                    
+                    </StackPanel>
+
+
+                </Grid>

@@ -1,0 +1,5 @@
+Project prerequisites
+====================
+NuGet URL - http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c
+NuGet - run  PM> Install-Package WPtoolkit
+http://silverlight.codeplex.com/

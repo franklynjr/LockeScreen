@@ -1,0 +1,15 @@
+In order to use this feature, you must set this application (LockeScreen)  as your default notification provider. To get started click the button below and make the neccassary changes.
+
+
+private void LockScreen_ChangeCounterAndText(object sender, RoutedEventArgs e)
+{
+    ShellTile.ActiveTiles.First().Update(
+        new FlipTileData()
+        {
+        Count = 99,
+        WideBackContent = "Lock screen text",
+        SmallBackgroundImage = new Uri(@"Assets\Tiles\FlipCycleTileSmall.png", UriKind.Relative),
+        BackgroundImage = new Uri(@"Assets\Tiles\FlipCycleTileMedium.png", UriKind.Relative),
+        BackBackgroundImage = new Uri(@"Assets\Tiles\FlipCycleTileMedium.png", UriKind.Relative)
+        });
+}
